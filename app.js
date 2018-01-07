@@ -20,7 +20,11 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE, POST');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
   res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
+  if('OPTIONS'==req.method) {
+    res.send(200);
+  }else{
+    next();
+  }
 });
 
 
