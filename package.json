@@ -14,6 +14,7 @@
     "image-saver-nodejs": "*",
     "jsonwebtoken": "*",
     "moment": "^2.18.1",
+    "morgan": "^1.9.0",
     "mysql": "*",
     "randomstring": "^1.1.5"
   },

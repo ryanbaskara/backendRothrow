@@ -6,7 +6,9 @@ var app = express();
 var server = require('http').createServer(app);
 var port = process.env.PORT || 2828;
 var config = require('./config');
-
+var morgan    =   require('morgan')
+// setup web services
+app.use(morgan('dev'))
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
 });
@@ -36,12 +38,6 @@ app.use(bodyparser.json({limit: '10mb'}));
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
-app.get('/data', function (req, res) {
-var workbook = XLSX.readFile('coba.xlsx');
-var sheet_name_list = workbook.SheetNames;
-var xlData = workbook.Sheets[sheet_name_list[0]]
-	res.json(xlData)
-})
 
 connection.init();
 
