@@ -7,6 +7,10 @@ module.exports = {
     app.post('/order/insert_order', function(req, res) {
       md_order.orderInput(req.body,res);
     });
+    //buang sampah2
+    app.post('/order/insert_order2', function(req, res) {
+      md_order.orderInput2(req.body,res);
+    });
 	
 	//ambil data
 	app.get('/order/getdata', function(req,res){

@@ -7,21 +7,21 @@ function Admin(){
 		connection.acquire(function(err, con) {
 			var imageSaver = new ImageSaver();
 	      	var pictname = new Date().getTime();
-	      	imageSaver.saveFile("../../web/indoexplore.yippytech.com/public_html/rothrow/"+pictname+".jpg", req.body.foto)
-	      		.then((data)=>{
-	        		var imagePath = "http://indoexplore.yippytech.com/rothrow/"+pictname+".jpg";
-					//   var creds = ['',req.id,req.name,req.jenis,req.mode,req.alamat,req.lat,req.lang,req.harga,req.status];
-					//   var query = 'insert into ro_pembuang (id_order,id,ro_nama_pembuang,ro_jenis_sampah,ro_mode_pembuangan,ro_alamat,ro_lat,ro_lang,ro_harga,ro_status) values (?,?,?,?,?,?,?,?,?,?)';
+	      	imageSaver.saveFile("../../web/indoexplore.yippytech.com/public_html/rothrow/"+pictname+".jpg", req.foto)
+      		.then((data)=>{
+        		var imagePath = "http://indoexplore.yippytech.com/rothrow/"+pictname+".jpg";
+				var creds = ['',req.id,req.name,req.jenis,req.mode,req.alamat,req.lat,req.lang,req.harga,req.status,imagePath];
+				var query = 'insert into ro_pembuang (id_order,id,ro_nama_pembuang,ro_jenis_sampah,ro_mode_pembuangan,ro_alamat,ro_lat,ro_lang,ro_harga,ro_status,ro_gambar) values (?,?,?,?,?,?,?,?,?,?,?)';
 
-					//   con.query(query, creds, function(err, result) {
-					// 	con.release();
-					// 	if (err) {
-					// 	  res.send({status: 400, message: err});
-					// 	}
-					// 	else {
-					// 	  res.send({status: 200, message: 'Insert successfully'});
-					// 	}
-					//   });
+				con.query(query, creds, function(err, result) {
+					con.release();
+					if (err) {
+					  res.send({status: 400, message: err});
+					}
+					else {
+					  res.send({status: 200, message: 'Insert successfully'});
+					}
+				});
 			})
 		});
 	  };
