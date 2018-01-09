@@ -83,15 +83,15 @@ function Admin(){
 			res.send({status: 400, message: 'Data yang dicari tidak ditemukan'});
 		  }
 		  else if(result.length!=0) {
-		  	var creds1 = ['Pick Up'];
-		  	var query_update = 'UPDATE ro_pembuang SET status = ?';
+		  	var creds1 = ['Pick Up',req.params.id];
+		  	var query_update = 'UPDATE ro_pembuang SET status = ? WHERE id_order = ?';
 		  	con.query(query_update,creds1, function(err2,result2){
 		  		con.release();
 		  		if(err2){
 		  			res.send({status: 400, message: 'Pick Up Failed'});
 		  		}
 		  		else {
-		  			res.send({status: 400, message: 'Pick Up Successfully'});
+		  			res.send({status: 200, message: 'Pick Up Successfully'});
 		  		}
 		  	});
 		  }
