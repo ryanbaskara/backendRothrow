@@ -84,7 +84,7 @@ function Admin(){
 		  }
 		  else if(result.length!=0) {
 		  	var creds1 = ['Pick Up',req.params.id];
-		  	var query_update = 'UPDATE ro_pembuang SET status = ? WHERE id_order = ?';
+		  	var query_update = 'UPDATE ro_pembuang SET ro_status = ? WHERE id_order = ?';
 		  	con.query(query_update,creds1, function(err2,result2){
 		  		con.release();
 		  		if(err2){
