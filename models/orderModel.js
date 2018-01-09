@@ -85,9 +85,9 @@ function Admin(){
 		  else if(result.length!=0) {
 		  	var creds1 = ['Pick Up'];
 		  	var query_update = 'UPDATE ro_pembuang SET status = ?';
-		  	con.query(query_update,creds1, function(req,res){
+		  	con.query(query_update,creds1, function(err2,result2){
 		  		con.release();
-		  		if(err){
+		  		if(err2){
 		  			res.send({status: 400, message: 'Pick Up Failed'});
 		  		}
 		  		else {
