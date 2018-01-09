@@ -73,5 +73,34 @@ function Admin(){
 		  });
 		});
 	};
+
+	this.updateOrder = function(req,res){
+		connection.acquire(function(err, con) {
+		  var creds = [req.params.id];
+		  var query1 = 'SELECT * FROM ro_pembuang WHERE id_order = ?';
+		  con.query(query1, creds, function(err, result) {
+		  con.release();
+		  if (err) {
+			res.send({status: 400, message: 'Data yang dicari tidak ditemukan'});
+		  }
+		  else if(result.length!=0) {
+		  	var creds1 = ['Pick Up'];
+		  	var query_update = 'UPDATE ro_pembuang SET status = ?';
+		  	con.query(query_update,creds1, function(req,res){
+		  		con.release();
+		  		if(err){
+		  			res.send({status: 400, message: 'Pick Up Failed'});
+		  		}
+		  		else {
+		  			res.send({status: 400, message: 'Pick Up Successfully'});
+		  		}
+		  	});
+		  }
+		  else {
+		  	res.send({status: 400, message: 'Get failed'});
+		  }
+		  });
+		});
+	};
 }
 module.exports = new Admin();
