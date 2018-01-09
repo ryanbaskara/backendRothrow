@@ -79,7 +79,6 @@ function Admin(){
 		  var creds = [req.params.id];
 		  var query1 = 'SELECT * FROM ro_pembuang WHERE id_order = ?';
 		  con.query(query1, creds, function(err, result) {
-		  con.release();
 		  if (err) {
 			res.send({status: 400, message: 'Data yang dicari tidak ditemukan'});
 		  }
