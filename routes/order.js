@@ -23,7 +23,7 @@ module.exports = {
     });
 
     //update data order (saat pengangkut picked up)
-    app.post('order/edit_order/:id', function(req,res) {
+    app.post('/order/edit_order/:id', function(req,res) {
       md_order.updateOrder(req,res);
     });
   }
