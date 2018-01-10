@@ -45,7 +45,7 @@ function Admin(){
 	
 	this.ambil_data = function(req,res){
 		connection.acquire(function(err, con) {
-		  var creeds = ['Waiting'];
+		  var creds = ['Waiting'];
 		  var query1 = 'SELECT * FROM ro_pembuang WHERE ro_status = ?';
 		  con.query(query1, creds, function(err, result) {
 		  con.release();
