@@ -45,8 +45,9 @@ function Admin(){
 	
 	this.ambil_data = function(req,res){
 		connection.acquire(function(err, con) {
-		  var query1 = 'SELECT * FROM ro_pembuang';
-		  con.query(query1, function(err, result) {
+		  var creeds = ['Waiting'];
+		  var query1 = 'SELECT * FROM ro_pembuang WHERE ro_status = ?';
+		  con.query(query1, creds, function(err, result) {
 		  con.release();
 		  if (err) {
 			res.send({status: 400, message: 'Get failed'});
